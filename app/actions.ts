@@ -1,10 +1,13 @@
 "use server"
-
+import { v4 as uuidv4 } from 'uuid';
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { parseWithZod} from "@conform-to/zod";
 import { bannerSchema, productSchema } from "@/lib/zodSchemas";
 import prisma from "@/lib/prisma";
+import { redis } from "@/lib/redis";
+import { Cart } from "@/lib/interfaces";
+import { revalidatePath } from "next/cache";
  
 export async function createProduct(prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
@@ -142,4 +145,93 @@ export async function deleteBanner (formData: FormData) {
     await prisma.banner.delete({where: {id: bannerId}});
 
     redirect("/dashboard/banner")
+}
+
+export async function addItem(formData: FormData) {
+    const productId = formData.get('productId') as string;
+    const color = formData.get('color') as string;
+    const size = formData.get('size') as string;
+    const quantity = parseInt(formData.get('quantity') as string, 10);
+
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+    
+    if (!user) {return redirect("/")};
+
+    let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+    const selectedProduct = await prisma.product.findUnique({
+        where: {id: productId}
+    });
+
+    if (!selectedProduct) { 
+        throw new Error("Product not found")
+    };
+
+    let myCart = {} as Cart
+
+    if (!cart || !cart.items) {
+        myCart= {
+            userId: user.id,
+            items: [{
+                id: uuidv4(),
+                productId: selectedProduct.id,
+                name: selectedProduct.name,
+                quantity: quantity,
+                price: selectedProduct.price,
+                image: selectedProduct.images[0],
+                color: color,
+                size: size
+            }]
+        }
+    } else {
+        myCart = cart;
+        let itemFound = false;
+
+        myCart.items = cart.items.map((item) => {
+            if (item.productId === selectedProduct.id && item.color === color && item.size === size) {
+                itemFound = true;
+                quantity === 1 ? item.quantity++ : item.quantity = quantity;
+            }
+            return item;
+        })
+
+        if(!itemFound) {
+            myCart.items.push({
+                id: uuidv4(),
+                productId: selectedProduct.id,
+                name: selectedProduct.name,
+                quantity: quantity,
+                price: selectedProduct.price,
+                image: selectedProduct.images[0],
+                color: color,
+                size: size
+            })
+        }
+    }
+
+    await redis.set(`cart-${user.id}`, myCart);
+    revalidatePath("/", "layout");
+}
+
+export async function deleteItem (formData: FormData) {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+    
+    if (!user) {return redirect("/")};
+
+    const itemId = formData.get('itemId');
+
+    let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+    if(cart && cart.items) {
+        const updateCart: Cart = {
+            userId: user.id,
+            items: cart.items.filter((item) => item.id !== itemId)
+        }
+
+        await redis.set(`cart-${user.id}`, updateCart);
+    }
+
+    revalidatePath("/shoppingcart");
 }

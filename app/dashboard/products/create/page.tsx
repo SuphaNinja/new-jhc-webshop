@@ -24,7 +24,7 @@ export default function CreateProductPage() {
     const [sizesArray, setSizesArray] = useState<string[]>([]);
     const [colorArray, setColorArray] = useState<string[]>([]);
     const [lastResult, action ] = useActionState(createProduct, undefined);
-    const [form, fields ] = useForm({
+    const [ form, fields ] = useForm({
         lastResult,
 
         onValidate({ formData }) {
