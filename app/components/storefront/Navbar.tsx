@@ -8,8 +8,10 @@ import { LoginLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server';
 import { Button } from '@/components/ui/button';
 import { redis } from '@/lib/redis';
 import { Cart } from '@/lib/interfaces';
+import { unstable_noStore as noStore } from 'next/cache'
 
 export async function Navbar() {
+    noStore();
     const {getUser} = getKindeServerSession();
     const user = await getUser();
 

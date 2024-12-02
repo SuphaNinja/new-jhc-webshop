@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma"
 import ProductCard from "./ProductCard";
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData() {
     const data = await prisma.product.findMany({
         where: { status: "published", isFeatured: true },
@@ -12,6 +12,7 @@ async function getData() {
 }
 
 export async function FeaturedProducts() {
+    noStore();
     const data = await getData();
 
     return (

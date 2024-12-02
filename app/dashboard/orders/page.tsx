@@ -4,7 +4,7 @@ import { formatPrice } from '@/lib/formatPrice';
 import prisma from '@/lib/prisma'
 import Link  from 'next/link';
 import React from 'react'
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData () {
     const data = await prisma.order.findMany({
         select: {
@@ -31,6 +31,7 @@ async function getData () {
     return data;
 }
 export default async function OrdersPage() {
+    noStore();
     const data = await getData();
 
     return (

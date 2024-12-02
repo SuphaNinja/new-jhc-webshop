@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react'
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData(category: $Enums.ProductCategory) {
     const data = await prisma.product.findMany({
         where: { category: category, status: "published"},
@@ -21,6 +21,7 @@ async function getData(category: $Enums.ProductCategory) {
 }
 
 export default async function CategoryPage({ params }: { params: { category: $Enums.ProductCategory }}) {
+    noStore();
     const data = await getData(params.category);
 
     return (

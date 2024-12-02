@@ -4,7 +4,7 @@ import { OrderDetails } from './OrderDetails'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ChevronLeft } from 'lucide-react'
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData(id: string) {
     const data = await prisma.order.findUnique({
         where: { id: id },
@@ -17,6 +17,7 @@ async function getData(id: string) {
 }
 
 export default async function OrderPage({ params }: { params: { id: string } }) {
+    noStore();
     const order = await getData(params.id)
 
     return (

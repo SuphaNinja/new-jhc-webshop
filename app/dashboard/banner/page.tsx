@@ -7,7 +7,7 @@ import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { MoreVertical, PlusCircle, User2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData() {
     const data = await prisma.banner.findMany({
         orderBy: { createdAt: "desc" },
@@ -17,6 +17,7 @@ async function getData() {
 }
 
 export default async function BannerPage() {
+    noStore();
     const banners = await getData();
 
     return (

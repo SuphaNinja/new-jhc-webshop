@@ -1,7 +1,7 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData () {
     const data = await prisma.banner.findMany({
         orderBy: {createdAt: "desc"},
@@ -9,6 +9,7 @@ async function getData () {
     return data;
 }
 export async function Hero() {
+    noStore();
     const data = await getData();
     return (
         <Carousel>

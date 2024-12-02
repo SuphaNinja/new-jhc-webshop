@@ -3,6 +3,7 @@ import { DashboardStats } from '../components/dashboard/DashboardStats'
 import { RecentSales } from '../components/dashboard/RecentSales'
 import { RevenueChart } from '../components/dashboard/Chart'
 import prisma from '@/lib/prisma'
+import { unstable_noStore as noStore } from 'next/cache'
 
 async function getData() {
     const data = await prisma.order.findMany({
@@ -24,6 +25,7 @@ async function getData() {
 
 
 export default async function Dashboard() {
+    noStore();
     const data = await getData()
 
     return (

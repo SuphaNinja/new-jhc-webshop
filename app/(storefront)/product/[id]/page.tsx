@@ -7,7 +7,7 @@ import { ChevronLeft, StarIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { formatPrice } from '@/lib/formatPrice'
-
+import { unstable_noStore as noStore } from 'next/cache'
 async function getData(productId: string) {
     const data = await prisma.product.findUnique({
         where: { id: productId },
@@ -19,6 +19,7 @@ async function getData(productId: string) {
 }
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
+    noStore();
     const data = await getData(params.id)
 
     return (
