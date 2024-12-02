@@ -11,7 +11,7 @@ import { revalidatePath } from "next/cache";
 import { stripe } from '@/lib/stripe';
 import Stripe from 'stripe';
 
-const adminEmails = [
+export const adminEmails = [
     process.env.ADMIN_EMAIL1,
     process.env.ADMIN_EMAIL2,
     process.env.ADMIN_EMAIL3

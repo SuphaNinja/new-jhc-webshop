@@ -7,15 +7,17 @@ import { DropdownMenu, DropdownMenuSeparator, DropdownMenuContent, DropdownMenuL
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-
+import { adminEmails } from '../actions'
 
 export default async function DashboardLayout({children}: {children: React.ReactNode}) {
     const {getUser} = getKindeServerSession();
     const user = await getUser();
 
-    if(!user || user.email !== "sidricobjork@gmail.com") { 
-        return redirect("/") 
-    };
+    console.log(user)
+
+    if (!user || !adminEmails.includes(user.email!)) {
+        return redirect("/");
+    }
 
     return (
         <div className='flex 2-full flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
