@@ -7,7 +7,8 @@ import { DropdownMenu, DropdownMenuSeparator, DropdownMenuContent, DropdownMenuL
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import { adminEmails } from '../actions'
+import { adminEmails } from '@/AdminEmails'
+
 
 export default async function DashboardLayout({children}: {children: React.ReactNode}) {
     const {getUser} = getKindeServerSession();

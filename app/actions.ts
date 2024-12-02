@@ -10,12 +10,7 @@ import { Cart } from "@/lib/interfaces";
 import { revalidatePath } from "next/cache";
 import { stripe } from '@/lib/stripe';
 import Stripe from 'stripe';
-
-export const adminEmails = [
-    process.env.ADMIN_EMAIL1,
-    process.env.ADMIN_EMAIL2,
-    process.env.ADMIN_EMAIL3
-];
+import { adminEmails } from '@/AdminEmails';
  
 export async function createProduct(prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
