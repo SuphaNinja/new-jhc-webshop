@@ -15,6 +15,8 @@ export async function Navbar() {
 
     const cart: Cart | null = await redis.get(`cart-${user?.id}`);
     const totalItems = cart?.items.reduce((acc, item) => acc + item.quantity, 0) || 0;
+
+    const userIsAdmin = user.email === process.env.ADMIN_EMAIL1 || user.email === process.env.ADMIN_EMAIL2 || user.email === process.env.ADMIN_EMAIL3;
     return (
         <nav className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between'>
             <div className='flex items-center'>
@@ -28,6 +30,9 @@ export async function Navbar() {
             <div className='flex items-center'>
                 {user ? (
                     <>
+                        {userIsAdmin && (
+                            <Link href={"/dashboard"}>Dashboard</Link>
+                        )}
                         <Link href={'/shoppingcart'} className='group p-2 flex items-center mr-2'>
                             <ShoppingBag className='size-6 text-gray-400 group-hover:text-gray-500'/>
                             <span className='ml-2 text-sm font-medium text-gray-600 group-hover:text-gray-700'>{totalItems}</span>
