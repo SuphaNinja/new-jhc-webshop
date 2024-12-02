@@ -18,7 +18,7 @@ export async function Navbar() {
 
     const cart: Cart | null = await redis.get(`cart-${user?.id}`);
     const totalItems = cart?.items.reduce((acc, item) => acc + item.quantity, 0) || 0;
-    
+
     return (
         <nav className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between'>
             <div className='flex items-center'>
@@ -32,7 +32,7 @@ export async function Navbar() {
             <div className='flex items-center'>
                 {user ? (
                     <>
-                        {!adminEmails.includes(user.email!) &&
+                        {adminEmails.includes(user.email!) &&
                         (
                             <Button asChild variant="link" className='font-medium mr-2'>
                                 <Link  href={"/dashboard"}>Dashboard</Link>
