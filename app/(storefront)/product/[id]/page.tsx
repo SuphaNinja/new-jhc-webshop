@@ -7,7 +7,6 @@ import { ChevronLeft, StarIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { formatPrice } from '@/lib/formatPrice'
-import { Params } from 'next/dist/server/request/params'
 
 async function getData(productId: string) {
     const data = await prisma.product.findUnique({
@@ -19,9 +18,8 @@ async function getData(productId: string) {
     return data
 }
 
-export default async function ProductPage({ params }: { params: Params }) {
-    const { id } = params;
-    const data = await getData(id as string);
+export default async function ProductPage({ params }: { params: { id: string } }) {
+    const data = await getData(params.id)
 
     return (
         <>
