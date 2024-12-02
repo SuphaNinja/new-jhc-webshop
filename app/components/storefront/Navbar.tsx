@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { redis } from '@/lib/redis';
 import { Cart } from '@/lib/interfaces';
 import { unstable_noStore as noStore } from 'next/cache'
+import { adminEmails } from '@/AdminEmails';
 
 export async function Navbar() {
     noStore();
@@ -17,7 +18,7 @@ export async function Navbar() {
 
     const cart: Cart | null = await redis.get(`cart-${user?.id}`);
     const totalItems = cart?.items.reduce((acc, item) => acc + item.quantity, 0) || 0;
-
+    
     return (
         <nav className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between'>
             <div className='flex items-center'>
@@ -31,9 +32,7 @@ export async function Navbar() {
             <div className='flex items-center'>
                 {user ? (
                     <>
-                        {(user.email === process.env.ADMIN_EMAIL1 ||
-                            user.email === process.env.ADMIN_EMAIL2 ||
-                            user.email === process.env.ADMIN_EMAIL3) &&
+                        {!adminEmails.includes(user.email!) &&
                         (
                             <Button asChild variant="link" className='font-medium mr-2'>
                                 <Link  href={"/dashboard"}>Dashboard</Link>
