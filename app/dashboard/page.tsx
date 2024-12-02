@@ -1,10 +1,7 @@
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { DollarSignIcon, PartyPopper, PartyPopperIcon, ShoppingBag, ShoppingBagIcon, User2, User2Icon } from 'lucide-react'
 import React from 'react'
 import { DashboardStats } from '../components/dashboard/DashboardStats'
 import { RecentSales } from '../components/dashboard/RecentSales'
-import { Chart, RevenueChart } from '../components/dashboard/Chart'
+import { RevenueChart } from '../components/dashboard/Chart'
 import prisma from '@/lib/prisma'
 
 async function getData() {
