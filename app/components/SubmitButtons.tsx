@@ -77,8 +77,8 @@ export function DeleteItemButton() {
     )
 }
 
-export function CheckoutButton () {
-    const {pending } = useFormStatus();
+export function CheckoutButtonBusiness() {
+    const { pending } = useFormStatus();
 
     return (
         <>
@@ -89,9 +89,28 @@ export function CheckoutButton () {
             </Button>
         ):(
             <Button type="submit" size="lg" className="w-full mt-5">
-                Checkout
+                Checkout (företag)
             </Button>
         )}
+        </>
+    )
+}
+
+export function CheckoutButtonPrivate() {
+    const { pending } = useFormStatus();
+
+    return (
+        <>
+            {pending ? (
+                <Button disabled size="lg" className="w-full mt-5">
+                    <Loader2 className="animate-spin mr-2 size-5" />
+                    Please Wait
+                </Button>
+            ) : (
+                <Button type="submit" size="lg" className="w-full mt-5">
+                    Checkout (privat)
+                </Button>
+            )}
         </>
     )
 }

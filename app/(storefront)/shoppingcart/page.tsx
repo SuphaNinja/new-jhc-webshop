@@ -1,5 +1,5 @@
 import { checkout, deleteItem } from '@/app/actions';
-import { CheckoutButton, DeleteItemButton } from '@/app/components/SubmitButtons';
+import { CheckoutButton, CheckoutButtonBusiness, CheckoutButtonPrivate, DeleteItemButton } from '@/app/components/SubmitButtons';
 import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/formatPrice';
 import { Cart } from '@/lib/interfaces';
@@ -89,7 +89,12 @@ export default async function ShoppingCartPage() {
                     </div>
                 ))}
                 <form action={checkout}>
-                    <CheckoutButton/>
+                    <input type="hidden" name="variant" value="business" />
+                    <CheckoutButtonBusiness/>
+                </form>
+                <form action={checkout}>
+                    <input type="hidden" name="variant" value="private" />
+                    <CheckoutButtonPrivate/>
                 </form>
             </div>
             )}

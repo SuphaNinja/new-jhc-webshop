@@ -237,11 +237,12 @@ export async function deleteItem (formData: FormData) {
     revalidatePath("/shoppingcart");
 }
 
-export async function checkout() {
+export async function checkout(formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
     if (!user) {return redirect("/")};
+    const variant = formData.get('variant');
 
     let cart: Cart | null = await redis.get(`cart-${user.id}`);
 
@@ -258,15 +259,26 @@ export async function checkout() {
             quantity: item.quantity,
         }));
 
-        const session = await stripe.checkout.sessions.create({
+        const sessionParams :Stripe.Checkout.SessionCreateParams = {
             mode: 'payment',
             line_items: lineItems,
             success_url: `${process.env.NEXT_PUBLIC_URL}/payment/success`,
             cancel_url: `${process.env.NEXT_PUBLIC_URL}/payment/cancel`,
             metadata: {
                 userId: user.id,
-            }
-        });
+            },
+            shipping_address_collection: {
+                allowed_countries: ['FI', 'NO', 'SE'],
+            },
+            allow_promotion_codes: true,
+        };
+
+        if (variant === 'business') {
+            sessionParams.tax_id_collection = { enabled: true };
+            sessionParams.billing_address_collection = 'required';
+        }
+
+        const session = await stripe.checkout.sessions.create(sessionParams);
 
         return redirect(session.url!);
     }

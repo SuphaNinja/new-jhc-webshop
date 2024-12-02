@@ -29,6 +29,7 @@ model Product {
   id              String @id @default(uuid())
   name            String
   description     String
+  priceId         String?
   status          ProductStatus
   inStock         Boolean @default(true)
   price           Int
