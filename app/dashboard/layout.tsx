@@ -6,7 +6,7 @@ import { CircleUserIcon, MenuIcon } from 'lucide-react'
 import { DropdownMenu, DropdownMenuSeparator, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger, DropdownMenuItem } from '@/components/ui/dropdown-menu'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { redirect } from 'next/navigation'
-import {LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 
 export default async function DashboardLayout({children}: {children: React.ReactNode}) {
@@ -16,6 +16,7 @@ export default async function DashboardLayout({children}: {children: React.React
     if(!user || user.email !== "sidricobjork@gmail.com") { 
         return redirect("/") 
     };
+
     return (
         <div className='flex 2-full flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <header className='sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-white'>

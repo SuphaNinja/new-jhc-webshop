@@ -10,18 +10,18 @@ import { Cart } from "@/lib/interfaces";
 import { revalidatePath } from "next/cache";
 import { stripe } from '@/lib/stripe';
 import Stripe from 'stripe';
+
+const adminEmails = [
+    process.env.ADMIN_EMAIL1,
+    process.env.ADMIN_EMAIL2,
+    process.env.ADMIN_EMAIL3
+];
  
 export async function createProduct(prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || 
-        (
-            user.email !== process.env.ADMIN_EMAIL1 &&
-            user.email !== process.env.ADMIN_EMAIL2 &&
-            user.email !== process.env.ADMIN_EMAIL3
-        )
-    ) {
+    if (!user || !adminEmails.includes(user.email!)) {
         return redirect("/");
     }
     
@@ -29,11 +29,9 @@ export async function createProduct(prevState: unknown, formData: FormData) {
         schema: productSchema,
     });
 
-
     if (submission.status !== "success") {
         return submission.reply();
     };
-
 
     const flattenedUrls = submission.value.images.flatMap((urlString) => 
         urlString.split(",").map((url) => url.trim()));
@@ -63,13 +61,7 @@ export async function editProduct (prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || 
-        (
-            user.email !== process.env.ADMIN_EMAIL1 &&
-            user.email !== process.env.ADMIN_EMAIL2 &&
-            user.email !== process.env.ADMIN_EMAIL3
-        )
-    ) {
+    if (!user || !adminEmails.includes(user.email!)) {
         return redirect("/");
     }
 
@@ -111,13 +103,7 @@ export async function deleteProduct (formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-   if (!user || 
-        (
-            user.email !== process.env.ADMIN_EMAIL1 &&
-            user.email !== process.env.ADMIN_EMAIL2 &&
-            user.email !== process.env.ADMIN_EMAIL3
-        )
-    ) {
+   if (!user || !adminEmails.includes(user.email!)) {
         return redirect("/");
     }
 
@@ -131,13 +117,7 @@ export async function createBanner(prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || 
-        (
-            user.email !== process.env.ADMIN_EMAIL1 &&
-            user.email !== process.env.ADMIN_EMAIL2 &&
-            user.email !== process.env.ADMIN_EMAIL3
-        )
-    ) {
+    if (!user || !adminEmails.includes(user.email!)) {
         return redirect("/");
     }
 
@@ -163,13 +143,7 @@ export async function deleteBanner (formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || 
-        (
-            user.email !== process.env.ADMIN_EMAIL1 &&
-            user.email !== process.env.ADMIN_EMAIL2 &&
-            user.email !== process.env.ADMIN_EMAIL3
-        )
-    ) {
+    if (!user || !adminEmails.includes(user.email!)) {
         return redirect("/");
     }
 
