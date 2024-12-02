@@ -242,7 +242,6 @@ export async function checkout(formData: FormData) {
     const user = await getUser();
     
     if (!user) {return redirect("/")};
-    const variant = formData.get('variant');
 
     let cart: Cart | null = await redis.get(`cart-${user.id}`);
 
@@ -271,12 +270,9 @@ export async function checkout(formData: FormData) {
                 allowed_countries: ['FI', 'NO', 'SE'],
             },
             allow_promotion_codes: true,
+            tax_id_collection: { enabled: true },
+            billing_address_collection: 'required',
         };
-
-        if (variant === 'business') {
-            sessionParams.tax_id_collection = { enabled: true };
-            sessionParams.billing_address_collection = 'required';
-        }
 
         const session = await stripe.checkout.sessions.create(sessionParams);
 
