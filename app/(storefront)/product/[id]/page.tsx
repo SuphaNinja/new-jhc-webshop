@@ -6,6 +6,7 @@ import prisma from '@/lib/prisma'
 import { ChevronLeft, StarIcon } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { formatPrice } from '@/lib/formatPrice'
 
 async function getData(productId: string) {
     const data = await prisma.product.findUnique({
@@ -31,7 +32,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
                 <ImageSlider images={data.images} />
                 <div>
                     <h1 className='text-3xl font-extrabold tracking-tight'>{data.name}</h1>
-                    <p className='text-3xl mt-2'>${data.price}</p>
+                    <p className='text-3xl mt-2'>{formatPrice(data.price)}</p>
                     <div className='mt-3 flex items-center gap-1'>
                         <StarIcon className='size-4 text-yellow-500 fill-yellow-500' />
                         <StarIcon className='size-4 text-yellow-500 fill-yellow-500' />

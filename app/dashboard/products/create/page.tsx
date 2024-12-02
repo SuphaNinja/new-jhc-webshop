@@ -101,7 +101,7 @@ export default function CreateProductPage() {
                                 defaultValue={fields.price.initialValue}
                                 type="number"
                                 className="w-full"
-                                placeholder="Product price"
+                                placeholder="Pris i öre"
                             />
                             <p className=' text-red-500'>{fields.price.errors}</p>
                         </div>

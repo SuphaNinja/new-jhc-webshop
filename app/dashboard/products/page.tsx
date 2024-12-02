@@ -7,6 +7,7 @@ import { CheckCircle2, MoreHorizontal, MoreVertical, PlusCircle, UserIcon, XCirc
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
+import { formatPrice } from '@/lib/formatPrice'
 
 async function getData() {
     const data = await prisma.product.findMany({
@@ -65,7 +66,7 @@ export default async function ProductsPage() {
                                     <TableCell>
                                         {product.isFeatured ? <CheckCircle2 className='size-4 text-green-500' /> : <XCircle className='size-4 text-red-500' />}
                                     </TableCell>
-                                    <TableCell>${product.price}</TableCell>
+                                    <TableCell>{formatPrice(product.price)}</TableCell>
                                     <TableCell>{new Intl.DateTimeFormat('en-US').format(product.createdAt)}</TableCell>
                                     <TableCell className='text-end'>
                                         <DropdownMenu>

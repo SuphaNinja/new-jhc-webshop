@@ -8,14 +8,20 @@ import prisma from "@/lib/prisma";
 import { redis } from "@/lib/redis";
 import { Cart } from "@/lib/interfaces";
 import { revalidatePath } from "next/cache";
+import { stripe } from '@/lib/stripe';
+import Stripe from 'stripe';
  
 export async function createProduct(prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || user.email !== "sidricobjork@gmail.com") {
-        return redirect("/");
-    };
+    if (!user || 
+            user.email !== process.env.ADMIN_EMAIL1 ||
+            user.email !== process.env.ADMIN_EMAIL2 ||
+            user.email !== process.env.ADMIN_EMAIL3
+        ) {
+            return redirect("/");
+        };
     
     const submission = parseWithZod(formData, {
         schema: productSchema,
@@ -55,7 +61,11 @@ export async function editProduct (prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || user.email !== "sidricobjork@gmail.com") {
+    if (!user || 
+        user.email !== process.env.ADMIN_EMAIL1 ||
+        user.email !== process.env.ADMIN_EMAIL2 ||
+        user.email !== process.env.ADMIN_EMAIL3
+    ) {
         return redirect("/");
     };
 
@@ -97,7 +107,11 @@ export async function deleteProduct (formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || user.email !== "sidricobjork@gmail.com") {
+   if (!user || 
+        user.email !== process.env.ADMIN_EMAIL1 ||
+        user.email !== process.env.ADMIN_EMAIL2 ||
+        user.email !== process.env.ADMIN_EMAIL3
+    ) {
         return redirect("/");
     };
 
@@ -111,7 +125,11 @@ export async function createBanner(prevState: unknown, formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || user.email !== "sidricobjork@gmail.com") {
+    if (!user || 
+        user.email !== process.env.ADMIN_EMAIL1 ||
+        user.email !== process.env.ADMIN_EMAIL2 ||
+        user.email !== process.env.ADMIN_EMAIL3
+    ) {
         return redirect("/");
     };
 
@@ -137,7 +155,11 @@ export async function deleteBanner (formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
     
-    if (!user || user.email !== "sidricobjork@gmail.com") {
+    if (!user || 
+        user.email !== process.env.ADMIN_EMAIL1 ||
+        user.email !== process.env.ADMIN_EMAIL2 ||
+        user.email !== process.env.ADMIN_EMAIL3
+    ) {
         return redirect("/");
     };
 
@@ -234,4 +256,39 @@ export async function deleteItem (formData: FormData) {
     }
 
     revalidatePath("/shoppingcart");
+}
+
+export async function checkout() {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+    
+    if (!user) {return redirect("/")};
+
+    let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+    if(cart && cart.items) {
+        const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = cart.items.map((item) => ({
+            price_data: {
+                currency: 'sek',
+                unit_amount: item.price,
+                product_data: {
+                    name: item.name,
+                    images: [item.image],
+                },
+            },
+            quantity: item.quantity,
+        }));
+
+        const session = await stripe.checkout.sessions.create({
+            mode: 'payment',
+            line_items: lineItems,
+            success_url: `${process.env.NEXT_PUBLIC_URL}/payment/success`,
+            cancel_url: `${process.env.NEXT_PUBLIC_URL}/payment/cancel`,
+            metadata: {
+                userId: user.id,
+            }
+        });
+
+        return redirect(session.url!);
+    }
 }

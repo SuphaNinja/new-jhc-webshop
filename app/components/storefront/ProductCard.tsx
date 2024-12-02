@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Skeleton } from '@/components/ui/skeleton'
+import { formatPrice } from '@/lib/formatPrice'
 import { Product } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -32,7 +33,7 @@ export default function ProductCard({ product }: iAppProps) {
             <div className='flex justify-between items-center'>
                 <h1 className='font-semibold text-xl'>{product.name}</h1>
                 <h3 className='inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-xl font-medium text-primary ring-inset ring-primary/10'>
-                    ${product.price}
+                    {formatPrice(product.price)}
                 </h3>
             </div>
             <p className='text-mt-2 text-gray-600 text-sm line-clamp-2'>
