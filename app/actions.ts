@@ -16,12 +16,14 @@ export async function createProduct(prevState: unknown, formData: FormData) {
     const user = await getUser();
     
     if (!user || 
-            user.email !== process.env.ADMIN_EMAIL1 ||
-            user.email !== process.env.ADMIN_EMAIL2 ||
+        (
+            user.email !== process.env.ADMIN_EMAIL1 &&
+            user.email !== process.env.ADMIN_EMAIL2 &&
             user.email !== process.env.ADMIN_EMAIL3
-        ) {
-            return redirect("/");
-        };
+        )
+    ) {
+        return redirect("/");
+    }
     
     const submission = parseWithZod(formData, {
         schema: productSchema,
@@ -62,12 +64,14 @@ export async function editProduct (prevState: unknown, formData: FormData) {
     const user = await getUser();
     
     if (!user || 
-        user.email !== process.env.ADMIN_EMAIL1 ||
-        user.email !== process.env.ADMIN_EMAIL2 ||
-        user.email !== process.env.ADMIN_EMAIL3
+        (
+            user.email !== process.env.ADMIN_EMAIL1 &&
+            user.email !== process.env.ADMIN_EMAIL2 &&
+            user.email !== process.env.ADMIN_EMAIL3
+        )
     ) {
         return redirect("/");
-    };
+    }
 
     const submission = parseWithZod(formData, {
         schema: productSchema,
@@ -108,12 +112,14 @@ export async function deleteProduct (formData: FormData) {
     const user = await getUser();
     
    if (!user || 
-        user.email !== process.env.ADMIN_EMAIL1 ||
-        user.email !== process.env.ADMIN_EMAIL2 ||
-        user.email !== process.env.ADMIN_EMAIL3
+        (
+            user.email !== process.env.ADMIN_EMAIL1 &&
+            user.email !== process.env.ADMIN_EMAIL2 &&
+            user.email !== process.env.ADMIN_EMAIL3
+        )
     ) {
         return redirect("/");
-    };
+    }
 
     const productId = formData.get("productId") as string;
     await prisma.product.delete({where: {id: productId}});
@@ -126,12 +132,14 @@ export async function createBanner(prevState: unknown, formData: FormData) {
     const user = await getUser();
     
     if (!user || 
-        user.email !== process.env.ADMIN_EMAIL1 ||
-        user.email !== process.env.ADMIN_EMAIL2 ||
-        user.email !== process.env.ADMIN_EMAIL3
+        (
+            user.email !== process.env.ADMIN_EMAIL1 &&
+            user.email !== process.env.ADMIN_EMAIL2 &&
+            user.email !== process.env.ADMIN_EMAIL3
+        )
     ) {
         return redirect("/");
-    };
+    }
 
     const submission = parseWithZod(formData, {
         schema: bannerSchema,
@@ -156,12 +164,14 @@ export async function deleteBanner (formData: FormData) {
     const user = await getUser();
     
     if (!user || 
-        user.email !== process.env.ADMIN_EMAIL1 ||
-        user.email !== process.env.ADMIN_EMAIL2 ||
-        user.email !== process.env.ADMIN_EMAIL3
+        (
+            user.email !== process.env.ADMIN_EMAIL1 &&
+            user.email !== process.env.ADMIN_EMAIL2 &&
+            user.email !== process.env.ADMIN_EMAIL3
+        )
     ) {
         return redirect("/");
-    };
+    }
 
     const bannerId = formData.get("bannerId") as string;
     await prisma.banner.delete({where: {id: bannerId}});
