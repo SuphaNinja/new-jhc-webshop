@@ -37,7 +37,7 @@ export function ShoppingBagButton() {
                 disabled
             >
                 <Loader2 className='size-5 mr-4 animate-spin' />
-                Please wait
+                Vänta...
             </Button>
         ):(
         <Button
@@ -46,7 +46,7 @@ export function ShoppingBagButton() {
             className = 'w-full mt-5'
         >
             <ShoppingBag className='mr-4 size-5' />
-            Add to cart
+            Lägg till i kundvagn
         </Button >
         )}
         </>
@@ -63,14 +63,14 @@ export function DeleteItemButton() {
                     disabled
                 >
                     <Loader2 className='size-5 mr-4 animate-spin' />
-                    Removing...
+                    Vänta...
                 </button>
             ): (
                 <button
                     type = "submit"
                     className='font-medium text-primary text-end'
                 >
-                    Delete
+                    Ta bort
                 </button >
             )}
         </>
@@ -83,13 +83,13 @@ export function CheckoutButton () {
     return (
         <>
         {pending ? (
-            <Button disabled size="lg" className="w-full mt-5">
+            <Button disabled size="lg" className="w-full">
                 <Loader2 className="animate-spin mr-2 size-5"/>
-                Please Wait
+                Vänta...
             </Button>
         ):(
-            <Button type="submit" size="lg" className="w-full mt-5">
-                Checkout
+            <Button type="submit" size="lg" className="w-full">
+                Gå till kassan
             </Button>
         )}
         </>

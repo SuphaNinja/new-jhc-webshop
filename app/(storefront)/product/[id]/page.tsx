@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { formatPrice } from '@/lib/formatPrice'
 import { unstable_noStore as noStore } from 'next/cache'
+import Container from '@/app/components/Container'
 async function getData(productId: string) {
     const data = await prisma.product.findUnique({
         where: { id: productId },
@@ -23,7 +24,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
     const data = await getData(params.id)
 
     return (
-        <>
+        <Container>
             <Button asChild variant="outline" size="icon">
                 <Link href={`/shop/${data.category}`}>
                     <ChevronLeft className='size-4' />
@@ -52,7 +53,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
             <div className='mt-16'>
                 <FeaturedProducts />
             </div>
-        </>
+        </Container>
     )
 }
 
