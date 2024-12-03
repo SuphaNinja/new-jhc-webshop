@@ -272,6 +272,7 @@ export async function checkout(formData: FormData) {
             allow_promotion_codes: true,
             tax_id_collection: { enabled: true },
             billing_address_collection: 'required',
+            phone_number_collection: { enabled: true },
         };
 
         const session = await stripe.checkout.sessions.create(sessionParams);

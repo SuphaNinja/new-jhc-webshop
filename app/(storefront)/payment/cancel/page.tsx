@@ -13,13 +13,13 @@ export default function CancelPage() {
                     <XCircle className='w-12 h-12 rounded-full bg-red-500/30 text-red-500 p-2'/>
                 </div>
                 <div className='mt-3 text-center sm:mt-5 w-full'>
-                    <h3 className='text-lg leading-6 font-medium'>Payment canceled</h3>
+                    <h3 className='text-lg leading-6 font-medium'>Dit köp misslyckades</h3>
                     <p className='mt-2 text-sm text-muted-foreground'>
-                        Something went wrong with your payment, you have not been charged.
-                        <br/> Please try again!
+                        Något gick fel och du har inte blivit debiterad.
+                        <br/> Var vänlig försök igen!
                     </p>
                     <Button asChild className='w-full mt-5 sm:mt-6'>
-                        <Link href='/shop'>Back to the shop</Link>
+                        <Link href='/shop'>Tillbaka till shoppen!</Link>
                     </Button>
                 </div>
             </div>

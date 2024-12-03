@@ -51,10 +51,18 @@ model Banner {
 }
 
 model Order {
-  id          String   @id @default(uuid())
-  status      String   @default("pending")
-  amount      Int
-  createdAt   DateTime @default(now())
+  id                  String   @id @default(uuid())
+  status              String   @default("pending")
+  amount              Int
+  createdAt           DateTime @default(now())
+  shippingCity        String
+  shippingCountry     String
+  shippingLine1       String
+  shippingPostalCode  String
+  phoneNumber         String
+  taxIdType           String?
+  taxIdValue          String?
+  name                String
   items       OrderItem[]
   
   User        User?    @relation(fields:[userId], references: [id])

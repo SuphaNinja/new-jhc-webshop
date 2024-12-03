@@ -13,13 +13,13 @@ export default function SuccessPage() {
                     <Check className='w-12 h-12 rounded-full bg-green-500/30 text-green-500 p-2' />
                 </div>
                 <div className='mt-3 text-center sm:mt-5 w-full'>
-                    <h3 className='text-lg leading-6 font-medium'>Payment successful</h3>
+                    <h3 className='text-lg leading-6 font-medium'>Ditt köp lyckades!</h3>
                     <p className='mt-2 text-sm text-muted-foreground'>
-                        Thank you for your purchase! Your payment has been successfully processed.
-                        <br /> Enjoy your product!
+                        Tack för ditt köp och vi hoppas att du blir nöjd.
+                        <br /> Varmt välkommen till JHC!
                     </p>
                     <Button asChild className='w-full mt-5 sm:mt-6'>
-                        <Link href='/shop'>Back to the shop</Link>
+                        <Link href='/shop'>Tillbaka till shoppen!</Link>
                     </Button>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export async function POST (req: Request) {
         case "checkout.session.completed": {
 
             const session = event.data.object;
-
+            console.log(session)
             const cartKey = `cart-${session.metadata?.userId}`;
             const cart: Cart | null = await redis.get(cartKey);
         
@@ -30,6 +30,14 @@ export async function POST (req: Request) {
                     amount: session.amount_total as number,
                     status: session.payment_status as string,
                     userId: session.metadata?.userId,
+                    shippingCity: session.shipping_details?.address?.city,
+                    shippingCountry: session.shipping_details?.address?.country,
+                    shippingLine1: session.shipping_details?.address?.line1,
+                    shippingPostalCode: session.shipping_details?.address?.postal_code,
+                    phoneNumber: session.customer_details?.phone,
+                    taxIdType: session.customer_details?.tax_ids?.[0]?.type,
+                    taxIdValue: session.customer_details?.tax_ids?.[0]?.value,
+                    name: session.shipping_details?.name,
                     items: {
                     create: cart!.items.map((item: any) => ({
                         productId: item.productId,
