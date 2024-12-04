@@ -17,9 +17,6 @@ type TimeRange = '1W' | '1M' | 'ALL';
 export function RevenueChart({ data }: ChartProps) {
     const [timeRange, setTimeRange] = useState<TimeRange>('ALL');
 
-    const formatCurrency = (value: number) =>
-        new Intl.NumberFormat('sv-SE', { style: 'currency', currency: 'SEK' }).format(value);
-
     const filteredData = useMemo(() => {
         const now = new Date();
         const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -91,7 +88,7 @@ export function RevenueChart({ data }: ChartProps) {
                                             <div className="bg-background border border-border p-2 rounded-md shadow-md">
                                                 <p className="font-medium">{formatDate(payload[0].payload.date)}</p>
                                                 <p className="text-muted-foreground">
-                                                    Revenue: {formatPrice(payload[0].value as number)}
+                                                    Revenue: {(payload[0].value as number) } kr
                                                 </p>
                                             </div>
                                         )

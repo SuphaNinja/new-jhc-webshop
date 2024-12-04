@@ -60,8 +60,9 @@ model Order {
   shippingLine1       String
   shippingPostalCode  String
   phoneNumber         String
-  taxIdType           String?
-  taxIdValue          String?
+  isCompany           Boolean @default(false)
+  companyName         String?
+  vatNumber           String?
   name                String
   items       OrderItem[]
   

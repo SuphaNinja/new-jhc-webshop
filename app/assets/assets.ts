@@ -37,32 +37,32 @@ export const projects = [
 export const employees = [
   {
     id: 1,
-    name: "Jane Doe",
-    title: "CEO",
+    name: "Diego Caceres Flores",
+    title: "VD",
     image: "https://cdn.prod.website-files.com/5fbb9b89508062592a9731b1/6448c1ce35d6ffe59e4d6f46_GettyImages-1399565382.jpg",
     phone: "123-456-7890",
     email: "1tEYK@example.com"
   },
   {
     id: 2,
-    name: "John Smith",
-    title: "CTO",
+    name: "Antonio Caceres",
+    title: "Arbetsledare",
     image: "https://cdn.prod.website-files.com/5fbb9b89508062592a9731b1/6448c1ce35d6ffe59e4d6f46_GettyImages-1399565382.jpg",
     phone: "123-456-7890",
     email: "1tEYK@example.com"
   },
   {
     id: 3,
-    name: "Alice Johnson",
-    title: "Lead Designer",
+    name: "Mikael Caceres Gamboa",
+    title: "Sälj Ansvarig",
     image: "https://cdn.prod.website-files.com/5fbb9b89508062592a9731b1/6448c1ce35d6ffe59e4d6f46_GettyImages-1399565382.jpg",
     phone: "123-456-7890",
     email: "1tEYK@example.com"
   },
   {
     id: 4,
-    name: "Bob Williams",
-    title: "Senior Developer",
+    name: "Sid Rico Björk",
+    title: "Sälj Manager  ",
     image: "https://cdn.prod.website-files.com/5fbb9b89508062592a9731b1/6448c1ce35d6ffe59e4d6f46_GettyImages-1399565382.jpg",
     phone: "123-456-7890",
     email: "1tEYK@example.com"

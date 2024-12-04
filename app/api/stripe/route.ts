@@ -25,6 +25,7 @@ export async function POST (req: Request) {
 
             const cartKey = `cart-${session.metadata?.userId}`;
             const cart: Cart | null = await redis.get(cartKey);
+            
             await prisma.order.create({
                 data: {
                     amount: session.amount_total as number,
@@ -35,8 +36,9 @@ export async function POST (req: Request) {
                     shippingLine1: session.shipping_details?.address?.line1!,
                     shippingPostalCode: session.shipping_details?.address?.postal_code!,
                     phoneNumber: session.customer_details?.phone!,
-                    taxIdType: session.customer_details?.tax_ids?.[0]?.type,
-                    taxIdValue: session.customer_details?.tax_ids?.[0]?.value,
+                    isCompany: session.metadata?.isBusiness === "true" ? true : false,
+                    vatNumber: session.metadata?.vatNumber || "",
+                    companyName: session.metadata?.companyName || "",
                     name: session.shipping_details?.name!,
                     items: {
                     create: cart?.items.map((item: any) => ({

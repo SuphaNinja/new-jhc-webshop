@@ -244,8 +244,15 @@ export async function checkout(formData: FormData) {
     if (!user) {return redirect("/")};
 
     const isBusiness = formData.get('isBusiness') === 'true';
+    
+    let vatNumber, companyName;
+    if (isBusiness) {
+        vatNumber = formData.get('vatNumber') as string;
+        companyName = formData.get('companyName') as string;
+    }
 
     let cart: Cart | null = await redis.get(`cart-${user.id}`);
+
     if(cart && cart.items) {
         const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = cart.items.map((item) => ({
             price_data: {
@@ -268,7 +275,6 @@ export async function checkout(formData: FormData) {
                 product_data: {
                     name: 'Leveranskostnad',
                     images: ["https://cdn-icons-png.flaticon.com/512/4947/4947662.png"],
-
                 },
                 unit_amount: 4900,
                 },
@@ -280,17 +286,20 @@ export async function checkout(formData: FormData) {
             cancel_url: `${process.env.NEXT_PUBLIC_URL}/payment/cancel`,
             metadata: {
                 userId: user.id,
-                isBusiness: isBusiness ? 'true' : 'false',
+                ...(isBusiness ? {
+                    isBusiness: 'true',
+                    vatNumber: vatNumber || '',
+                    companyName: companyName || ''
+                } : {})
             },
             shipping_address_collection: {
                 allowed_countries: ['FI', 'NO', 'SE'],
             },
             allow_promotion_codes: true,
-            tax_id_collection: { enabled: isBusiness },
             billing_address_collection: 'required',
             phone_number_collection: { enabled: true },
             automatic_tax: { 
-                enabled: !isBusiness,
+                enabled: isBusiness,
             },
         };
         

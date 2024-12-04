@@ -15,7 +15,7 @@ export async function Hero() {
     
     return (
         <>
-            <div className="relative h-[60vh] lg:h-[80vh]">
+            <div className="relative h-[50vh] lg:h-[60vh]">
                 <Image
                     fill
                     alt="Banner Image"

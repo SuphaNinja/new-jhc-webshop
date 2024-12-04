@@ -1,7 +1,7 @@
-import { EditForm } from "@/app/components/dashboard/EditForm";
+import { EditForm } from "@/app/components/dashboard/products/EditForm";
 import prisma from "@/lib/prisma"
 import { notFound } from "next/navigation"
-import { unstable_noStore as noStore } from 'next/cache'
+import { unstable_noStore as noStore } from 'next/cache'    
 
 async function getData(productId: string) {
     const data = await prisma.product.findUnique({

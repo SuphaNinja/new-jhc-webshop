@@ -1,7 +1,7 @@
 import React from 'react'
-import { DashboardStats } from '../components/dashboard/DashboardStats'
-import { RecentSales } from '../components/dashboard/RecentSales'
-import { RevenueChart } from '../components/dashboard/Chart'
+import { DashboardStats } from '../components/dashboard/dashboard/DashboardStats'
+import { RecentSales } from '../components/dashboard/dashboard/RecentSales'
+import { RevenueChart } from '../components/dashboard/dashboard/Chart'
 import prisma from '@/lib/prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 

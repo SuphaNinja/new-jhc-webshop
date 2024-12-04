@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react'
+import Image from 'next/image'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -17,14 +19,17 @@ export function Footer() {
                 <span className='sr-only'>Facebook</span>
                 <Facebook size={20} />
               </Link>
-              <Link href="https://instagram.com" className='text-gray-400 hover:text-gray-500'>
-                <span className='sr-only'>Instagram</span>
-                <Instagram size={20} />
-              </Link>
               <Link href="https://linkedin.com" className='text-gray-400 hover:text-gray-500'>
                 <span className='sr-only'>LinkedIn</span>
                 <Linkedin size={20} />
               </Link>
+            </div>
+            <div className="flex flex-col space-y-4 mt-5">
+              <div className='flex space-x-4'>
+                <Image alt='' src="https://i.gyazo.com/26307c2aac7026ab63421de6f8ee15bf.png" width={90} height={80} />
+                <Image alt='' src="https://i.gyazo.com/31812714e4c912bbc9ee32d99502c81e.png" width={80} height={80} />
+              </div>
+              <Image alt='' src="https://i.gyazo.com/d14e5a1ecb4fb809ad3132448ed0457a.png" width={200} height={80} />
             </div>
           </div>
           <div>
