@@ -21,7 +21,8 @@ async function getData(productId: string) {
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
     noStore();
-    const data = await getData(params.id)
+    const { id } = params
+    const data = await getData(id);
 
     return (
         <Container>

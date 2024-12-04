@@ -2,6 +2,7 @@ import { Cart } from "@/lib/interfaces";
 import prisma from "@/lib/prisma";
 import { redis } from "@/lib/redis";
 import { stripe } from "@/lib/stripe";
+import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
 export async function POST (req: Request) {
@@ -21,11 +22,10 @@ export async function POST (req: Request) {
         case "checkout.session.completed": {
 
             const session = event.data.object;
-            console.log(session)
+
             const cartKey = `cart-${session.metadata?.userId}`;
             const cart: Cart | null = await redis.get(cartKey);
-        
-            const order = await prisma.order.create({
+            await prisma.order.create({
                 data: {
                     amount: session.amount_total as number,
                     status: session.payment_status as string,
@@ -39,7 +39,7 @@ export async function POST (req: Request) {
                     taxIdValue: session.customer_details?.tax_ids?.[0]?.value,
                     name: session.shipping_details?.name!,
                     items: {
-                    create: cart!.items.map((item: any) => ({
+                    create: cart?.items.map((item: any) => ({
                         productId: item.productId,
                         name: item.name,
                         quantity: item.quantity,
@@ -50,12 +50,10 @@ export async function POST (req: Request) {
                     }))
                     }
                 },
-                include: {
-                    items: true
-                }
             });
 
             await redis.del(cartKey);
+            revalidatePath("/", "layout");
             break;
         }
         default: console.log(`Unhandled event type: ${event.type}`);

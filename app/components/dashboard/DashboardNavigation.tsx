@@ -6,6 +6,10 @@ import React from 'react'
 
 const links = [
     {
+        name: 'Home',
+        href: '/',
+    },
+    {
         name: 'Dashboard',
         href: '/dashboard',
     },
@@ -21,6 +25,7 @@ const links = [
         name: 'Banner Picture',
         href: '/dashboard/banner',
     },
+    
 
 ];
 export default function DashboardNavigation() {

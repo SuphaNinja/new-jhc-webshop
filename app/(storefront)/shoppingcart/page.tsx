@@ -5,16 +5,18 @@ import { formatPrice } from '@/lib/formatPrice';
 import { Cart } from '@/lib/interfaces';
 import { redis } from '@/lib/redis';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
-import { ShoppingBagIcon } from 'lucide-react';
+import { ShoppingBagIcon, Truck } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
 import { unstable_noStore as noStore } from 'next/cache'
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export default async function ShoppingCartPage() {
     noStore();
-    const { getUser} = getKindeServerSession();
+    const { getUser } = getKindeServerSession();
     const user = await getUser();
 
     if(!user) {
@@ -49,21 +51,41 @@ export default async function ShoppingCartPage() {
             <div className='flex flex-col gap-y-10'>
                 <div className='mt-10 border-b-2 pb-4'>
                     <h1 className='text-2xl font-semibold text-center md:text-start mb-4'>Kundvagn</h1>
-                    <div className='flex justify-between font-medium'>
-                        <p>Total summa:</p>
-                        <p>{formatPrice(totalPrice)}</p>
-                    </div>
+                            <div className="space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <p className="text-sm">Delsumma:</p>
+                                    <p>{formatPrice(totalPrice)}</p>
+                                </div>
+                                <div className="flex items-center justify-between text-sm">
+                                    <div className="flex items-center gap-1">
+                                        <Truck size={16} />
+                                        <p>Leverans:</p>
+                                    </div>
+                                    <p>{formatPrice(4900)}</p>
+                                </div>
+                                <div className="flex items-center justify-between font-bold">
+                                    <p>Totalt:</p>
+                                    <p>{formatPrice(totalPrice + 4900)}</p>
+                                </div>
+                            </div>
                 </div>
 
                 {cart?.items.map((item, index) => (
                     <CartItemCard key={index} item={item}/>
                 ))}
-
-                <p className='text-center text-md md:text-lg'>Välj mellan förtagskund eller privatkund i kassan</p>
-                <form action={checkout}>
-                    <CheckoutButton/>
-                </form>
-                
+                    <form action={checkout}>
+                        <div className="space-y-4">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox
+                                    id="isBusiness"
+                                    name="isBusiness"
+                                    value="true"
+                                />
+                                <Label htmlFor="isBusiness">Köper som företag</Label>
+                            </div>
+                            <CheckoutButton/>
+                        </div>
+                    </form>
             </div>
             )}
         </div>

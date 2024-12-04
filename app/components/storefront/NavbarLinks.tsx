@@ -31,6 +31,11 @@ export const navbarLinks= [
         name: "Projekt",
         href: "/projects"
     },
+    {
+        id: 5,
+        name: "Kontakta Oss",
+        href: "/contact"
+    },
 ]
 
 export function NavbarLinks() {

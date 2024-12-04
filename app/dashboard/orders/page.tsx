@@ -5,27 +5,12 @@ import prisma from '@/lib/prisma'
 import Link  from 'next/link';
 import React from 'react'
 import { unstable_noStore as noStore } from 'next/cache'
+
+
 async function getData () {
     const data = await prisma.order.findMany({
-        select: {
-            amount: true,
-            createdAt: true,
-            status: true,
-            id: true,
-            items: true,
-            User: {
-                select: {
-                    firstName: true,
-                    lastName: true,
-                    email: true,
-                    profileImage: true
-                }
-            }
-        },
-        
-        orderBy: {
-            createdAt: 'desc'
-        }
+        include: { items: true, User: true },
+        orderBy: {createdAt: 'desc'},
     });
 
     return data;
@@ -59,7 +44,7 @@ export default async function OrdersPage() {
                                     <p className='font-medium'>{item.User?.firstName} {item.User?.lastName}</p>
                                     <p className='hidden md:flex text-sm text-muted-foreground'>{item.User?.email}</p>
                                 </TableCell>
-                                <TableCell>Order</TableCell>
+                                <TableCell>{item.taxIdValue && "Company" || "Private"}</TableCell>
                                 <TableCell>{item.status}</TableCell>
                                 <TableCell>
                                     <Link 

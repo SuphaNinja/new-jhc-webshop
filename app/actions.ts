@@ -243,8 +243,9 @@ export async function checkout(formData: FormData) {
     
     if (!user) {return redirect("/")};
 
-    let cart: Cart | null = await redis.get(`cart-${user.id}`);
+    const isBusiness = formData.get('isBusiness') === 'true';
 
+    let cart: Cart | null = await redis.get(`cart-${user.id}`);
     if(cart && cart.items) {
         const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = cart.items.map((item) => ({
             price_data: {
@@ -258,23 +259,41 @@ export async function checkout(formData: FormData) {
             quantity: item.quantity,
         }));
 
-        const sessionParams :Stripe.Checkout.SessionCreateParams = {
+         const sessionParams: Stripe.Checkout.SessionCreateParams = {
             mode: 'payment',
-            line_items: lineItems,
+            line_items: [
+            {
+                price_data: {
+                currency: 'sek', 
+                product_data: {
+                    name: 'Leveranskostnad',
+                    images: ["https://cdn-icons-png.flaticon.com/512/4947/4947662.png"],
+
+                },
+                unit_amount: 4900,
+                },
+                quantity: 1,
+            }, 
+            ...lineItems,
+            ],
             success_url: `${process.env.NEXT_PUBLIC_URL}/payment/success`,
             cancel_url: `${process.env.NEXT_PUBLIC_URL}/payment/cancel`,
             metadata: {
                 userId: user.id,
+                isBusiness: isBusiness ? 'true' : 'false',
             },
             shipping_address_collection: {
                 allowed_countries: ['FI', 'NO', 'SE'],
             },
             allow_promotion_codes: true,
-            tax_id_collection: { enabled: true },
+            tax_id_collection: { enabled: isBusiness },
             billing_address_collection: 'required',
             phone_number_collection: { enabled: true },
+            automatic_tax: { 
+                enabled: !isBusiness,
+            },
         };
-
+        
         const session = await stripe.checkout.sessions.create(sessionParams);
 
         return redirect(session.url!);

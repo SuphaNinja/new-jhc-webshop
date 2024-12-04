@@ -1,34 +1,11 @@
 import React from 'react'
-import Image from 'next/image'
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { QuoteIcon } from 'lucide-react'
-
-const testimonials = [
-  {
-    id: 1,
-    content: "This company transformed our business. Their innovative solutions and dedicated team exceeded all our expectations.",
-    author: "Emma Larsson",
-    role: "CEO, TechStart AB",
-    avatar: "/placeholder.svg?height=40&width=40"
-  },
-  {
-    id: 2,
-    content: "I've never worked with a more professional and responsive team. They truly understand customer needs.",
-    author: "Anders Svensson",
-    role: "Marketing Director, GrowFast",
-    avatar: "/placeholder.svg?height=40&width=40"
-  },
-  {
-    id: 3,
-    content: "The quality of their work is outstanding. They delivered our project on time and within budget.",
-    author: "Sofia Bergström",
-    role: "Project Manager, BuildRight",
-    avatar: "/placeholder.svg?height=40&width=40"
-  }
-]
+import { testimonials } from '@/app/assets/assets'
 
 export default function Testimonials() {
+
   return (
     <section className="py-12">
       <div className="container mx-auto px-4">
