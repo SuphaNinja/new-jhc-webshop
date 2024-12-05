@@ -16,7 +16,7 @@ interface iAppProps {
 export default function ProjectCard({project}: {project: iAppProps}) {
   return (
       <div
-          className={`flex flex-col lg:flex-row justify-between gap-16 items-center  lg:p-8 bg-background/50 rounded-2xl backdrop-blur-sm ${project.id % 2 === 0 ? "lg:flex-row-reverse" : ""
+          className={`flex flex-col lg:flex-row justify-between gap-16 items-center  lg:p-8 bg-[#1F2B3D] rounded-2xl backdrop-blur-sm ${project.id % 2 === 0 ? "lg:flex-row-reverse" : ""
               }`}
       >
           <div className='w-full lg:w-3/5'>
@@ -43,9 +43,9 @@ export default function ProjectCard({project}: {project: iAppProps}) {
 
           <div className='flex flex-col w-full lg:w-2/5 h-full'>
               <div className="space-y-4">
-                  <h1 className='text-3xl font-bold tracking-tight'>{project.title}</h1>
-                  <p className='text-muted-foreground font-medium'>{project.adress}</p>
-                  <p className='text-md text-muted-foreground leading-relaxed line-clamp-6'>{project.description}</p>
+                  <h1 className='text-3xl font-bold text-muted tracking-tight'>{project.title}</h1>
+                  <p className='text-muted-foreground text-neutral-200 font-medium'>{project.adress}</p>
+                  <p className='text-md  text-neutral-300 leading-relaxed line-clamp-6'>{project.description}</p>
               </div>
               <Button
                   className={`mt-8 w-full sm:w-auto hover:scale-105 ${project.id % 2 === 0 ? "sm:self-start" : "sm:self-end"}`}

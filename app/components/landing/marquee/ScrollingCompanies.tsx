@@ -8,12 +8,12 @@ const companies = [
 
 export default function ScrollingCompanies() {
     return (
-        <div className="relative flex overflow-x-hidden border-y border-gray-200 bg-gray-50">
+        <div className="relative flex overflow-x-hidden border-b  bg-[#4076AC]">
             <div className="py-6 animate-marquee whitespace-nowrap flex items-center">
                 {companies.map((company, index) => (
                     <span
                         key={`company-1-${index}`}
-                        className="mx-8 text-lg font-medium text-gray-800 hover:text-primary transition-colors duration-300 cursor-default"
+                        className="mx-8 text-lg font-medium text-muted hover:text-primary transition-colors duration-300 cursor-default"
                     >
                         {company}
                     </span>
@@ -23,7 +23,7 @@ export default function ScrollingCompanies() {
                 {companies.map((company, index) => (
                     <span
                         key={`company-2-${index}`}
-                        className="mx-8 text-lg font-medium text-gray-800 hover:text-primary transition-colors duration-300 cursor-default"
+                        className="mx-8 text-lg font-medium text-muted hover:text-primary transition-colors duration-300 cursor-default"
                     >
                         {company}
                     </span>

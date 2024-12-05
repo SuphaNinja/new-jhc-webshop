@@ -84,12 +84,20 @@ export function OrderDetails( { order } : OrderProps) {
                             </Badge>
                         </div>
                         <div className="flex justify-between">
-                            <span className="font-semibold">Amount:</span>
+                            <span className="font-semibold">Base Price:</span>
+                            <span>{formatPrice(order.amount * 0.75)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                            <span className="font-semibold">VAT (25%):</span>
+                            <span>{formatPrice(order.amount * 0.25)}</span>
+                        </div>
+                        <div className="flex justify-between text-lg font-bold">
+                            <span>Total Amount:</span>
                             <span>{formatPrice(order.amount)}</span>
                         </div>
                         <div className="flex justify-between">
                             <span className="font-semibold">Date:</span>
-                            <span>{formatDate(order.createdAt) }</span>
+                            <span>{formatDate(order.createdAt)}</span>
                         </div>
                     </div>
                 </CardContent>

@@ -65,8 +65,8 @@ export default function FlippableCards() {
 
 const Badge = () => {
     return (
-        <div className="border p-2 px-4 gap-2 inline-flex rounded-full">
-            <h1 className="text-md font-medium">Garanti</h1>
+        <div className="border p-2 px-4 bg-[#2877BD] gap-2 inline-flex rounded-full">
+            <h1 className="text-md text-muted font-medium">Garanti</h1>
         </div>
     )
 }

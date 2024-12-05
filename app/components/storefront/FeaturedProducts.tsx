@@ -17,7 +17,7 @@ export async function FeaturedProducts() {
     const data = await getData();
 
     return (
-    <div>
+    <div className="pt-16 border-t">
         <h2 className="text-2xl md:text-4xl font-bold inline-flex mb-2 md:mb-6 tracking-tight">
             Toppsäljare Hos Oss 
             <Star fill="yellow" className="md:size-10 size-8 ml-3"/>

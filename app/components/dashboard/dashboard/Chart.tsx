@@ -78,9 +78,7 @@ export function RevenueChart({ data }: ChartProps) {
                                 tickFormatter={formatDate}
                                 interval="preserveStartEnd"
                             />
-                            <YAxis
-                                tickFormatter={formatPrice}
-                            />
+                            <YAxis/>
                             <ChartTooltip
                                 content={({ active, payload }) => {
                                     if (active && payload && payload.length) {

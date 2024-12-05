@@ -18,7 +18,9 @@ export default function page() {
         <FlippableCards />
         <FeaturedProducts />
         <Services />
+      </Container>
         <ProjectsSection />
+      <Container>
         <Testimonials />
         <Employees />
       </Container>
