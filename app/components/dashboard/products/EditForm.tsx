@@ -8,10 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { ChevronLeft, X } from "lucide-react";
 import Link from "next/link";
-import StringArrayInput from "../StringArrayInput";
+import StringArrayInput from "../../StringArrayInput";
 import Image from "next/image";
 import { UploadDropzone } from "@/lib/uploadthing";
-import { SubmitButton } from "../SubmitButtons";
+import { SubmitButton } from "../../SubmitButtons";
 import { Switch } from "@/components/ui/switch";
 import { useActionState, useState } from "react";
 import { useForm } from "@conform-to/react";
