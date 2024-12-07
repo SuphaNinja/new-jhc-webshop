@@ -1,18 +1,49 @@
+import image1 from "./Images/1.jpeg"
+import image2 from "./Images/2.jpeg"
+import image3 from "./Images/3.jpeg"
+import image4 from "./Images/4.jpeg"
+import image5 from "./Images/5.jpeg"
+import image6 from "./Images/6.jpeg"
+import image7 from "./Images/7.jpeg"
+import image9 from "./Images/9.jpeg"
+import image10 from "./Images/10.jpeg"
+import image11 from "./Images/11.jpeg"
+import image12 from "./Images/12.jpeg"
+import image13 from "./Images/13.jpeg"
+import image14 from "./Images/14.jpeg"
+import image15 from "./Images/15.jpeg"
+import image16 from "./Images/16.jpeg"
+import image17 from "./Images/17.jpeg"
+import image18 from "./Images/18.jpeg"
+import image19 from "./Images/19.jpeg"
+import image20 from "./Images/20.jpeg"
+import image21 from "./Images/21.jpeg"
+import image22 from "./Images/22.jpeg"
+import image23 from "./Images/23.jpeg"
+import image24 from "./Images/24.jpeg"
+import image25 from "./Images/25.jpeg"
+import image26 from "./Images/26.jpeg"
+import image27 from "./Images/27.jpeg"
+import image28 from "./Images/28.jpeg"
+import image29 from "./Images/29.jpeg"
+import image30 from "./Images/30.jpeg"
+import image31 from "./Images/31.jpeg"
+import image32 from "./Images/32.jpeg"
+import image33 from "./Images/33.jpeg"
+import image34 from "./Images/34.jpeg"
+
+
 export const projects = [
     {
         id: 0,
-        title: "Project 1",
+        title: "Papptak",
         adress: "Adress of project 1",
         description: " project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1of project 1 vDescription of project 1Description of project 1Description of project 1",
-        images: [
-            "https://www.city-guide-stockholm.com/_bibli/articlesPage/72/images/adobestock-kevin-cho-stockholm.jpg?v=ficheArticle&width=490&height=275&pixelRatio=2.6250",
-            "https://images.ctfassets.net/nwbqij9m1jag/pMT8jSC5zwqIwwyCo4m2c/03add94bb9fa8d765af6b4bd0f314ed1/Stockholm.jpg?w=1024&fit=fill&f=faces&fm=webp",
-            "https://www.city-guide-stockholm.com/_bibli/articlesPage/57/images/skeppsholmen-lesley-williamson-1.jpg?v=ficheArticle&width=416&height=275&pixelRatio=2.6250"
-        ],
+        images: [image21,image22,image23,image24],
     },
     {
         id: 1,
-        title: "Project 1",
+        title: "Tegelpannor",
         adress: "Adress of project 1",
         description: "Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1",
         images: [
@@ -23,7 +54,7 @@ export const projects = [
     },
     {
         id: 2,
-        title: "Project 1",
+        title: "Solpaneler ",
         adress: "Adress of project 1",
         description: " Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1",
         images: [
@@ -71,36 +102,36 @@ export const employees = [
 
 export const services = [
   {
-    title: "Residential Roofing",
-    description: "Protect your home with our top-quality residential roofing services. We offer installation, repair, and replacement for all types of residential roofs, ensuring your family stays safe and dry.",
-    image: "/placeholder.svg?height=400&width=600",
-    features: ["Shingle roofing", "Tile roofing", "Metal roofing", "Flat roofing", "Roof inspections", "Emergency repairs"]
+    title: "Papptak",
+    description: "Att lägga ett papptak på en villa innebär att rulla ut och fästa takpapp för ett smidigt och kostnadseffektivt skydd. Arbetet kräver noggrann installation för att säkerställa vattenavvisning och långvarig hållbarhet.",
+    image: image21,
+    features: ["Läggning", "Reparation", "Underhåll och tätning", "Installation av ytskikt på platta tak", "Inspektion och bedömning", "Akuta reparationer för läckage"]
   },
   {
-    title: "Commercial Roofing",
+    title: "Plåttak",
     description: "Keep your business running smoothly with our durable and efficient commercial roofing solutions. We understand the unique needs of commercial properties and provide tailored services to meet them.",
-    image: "/placeholder.svg?height=400&width=600",
-    features: ["Built-up roofing", "Modified bitumen", "Single-ply roofing", "Green roofing", "Roof maintenance programs", "Commercial roof repair"]
+    image:  image7,
+    features: ["Installation", "Reparation", "Underhåll och tätning", "Byte och montering", "Inspektion och bedömning", "Akuta reparationer för läckage"]
   },
   {
-    title: "Roof Maintenance",
-    description: "Extend the life of your roof and prevent costly repairs with our comprehensive maintenance services. Regular maintenance can save you money and ensure your roof performs at its best year-round.",
-    image: "/placeholder.svg?height=400&width=600",
-    features: ["Annual inspections", "Gutter cleaning", "Moss removal", "Minor repairs", "Weatherproofing", "Preventative maintenance plans"]
+    title: "Solpaneler / infästningsplattor",
+    description: "Att installera solpaneler på en villa innebär att montera solceller för att omvandla solljus till el. Arbetet kräver noggrann planering för att optimera energiproduktionen och säkerställa långsiktig effektivitet.",
+    image:  image30,
+    features: ["Installation av solpaneler", "Montering av infästningsplattor för tak", "Optimering av solpanelernas placering", "Underhåll och rengöring av solpaneler", "Inspektion av infästningar och solpanelssystem", "Akuta reparationer av solpaneler och infästningsplattor"]
   },
   {
-    title: "Emergency Roof Repair",
-    description: "When disaster strikes, we're here to help. Our emergency roof repair service is available 24/7 to address urgent roofing issues and prevent further damage to your property.",
-    image: "/placeholder.svg?height=400&width=600",
-    features: ["24/7 availability", "Rapid response", "Temporary repairs", "Water damage mitigation", "Insurance claim assistance", "Full repair and restoration"]
+    title: "Snöskottning",
+    description: "Att utföra snöskottning på en villa innebär att avlägsna snö från taket för att förhindra överbelastning och skador. Arbetet kräver noggrannhet och rätt utrustning för att säkerställa att taket förblir säkert och funktionellt under vintermånaderna.",
+    image: image33,
+    features: ["Professionell snöskottning av tak", "Borttagning av istappar och snöbarrikader", "Förebyggande arbete för att minska snöansamling", "Snölastbedömning och säkerhetsinspektioner", "Rengöring av hängrännor och stuprör från is och snö", "Akut snöskottning för att undvika takskador"]
   }
 ]
 
 export const companyInfo = {
   name: "JHC Plåt & Bygg AB",
-  description: "JHC Plåt & Bygg AB grundades 1995 med en vision om att leverera högkvalitativa taklösningar till både bostäder och kommersiella fastigheter. Med över 25 års erfarenhet har vi etablerat oss som en ledande aktör inom takbranschen i Sverige.",
-  mission: "Att erbjuda hållbara och innovativa taklösningar som skyddar och förskönar byggnader, samtidigt som vi prioriterar kundnöjdhet och miljöansvar.",
-  vision: "Att vara det självklara valet för taklösningar i Sverige, kända för vår expertis, kvalitet och kundservice.",
+  description: "Med sin hantverkstradition och ett osvikligt sinne för detaljer byggde Antonio snabbt upp ett gott rykte i branschen. Hans engagemang för kvalitet och kundnöjdhet gjorde att företaget snart blev en ledande aktör inom pappläggning och plåtslageri i regionen. Antonio började med en liten verkstad och ett par anställda, men med hårt arbete och dedikation har företaget vuxit stadigt. Idag är JHC Bygg och Plåt AB känt för sitt gedigna hantverk och sin förmåga att leverera skräddarsydda lösningar till både privatpersoner och företag. JHC Bygg och Plåt AB håller fast vid sina grundläggande värderingar och kombinerar tradition med innovation för att möta sina kunders utvecklande behov.",
+  mission: "Genom att erbjuda hållbara och innovativa taklösningar som skyddar och med en bra kundnöjdhet och miljöansvar.",
+  vision: "JHC Bygg och Plåt AB med en enkel men stark vision - att leverera högkvalitativ pappläggning och plåtslageri med en personlig touch.",
   values: [
     {
       title: "Kvalitet",
@@ -124,16 +155,17 @@ export const companyInfo = {
     "Takrenovering",
     "Takinspektion och underhåll",
     "Isolering",
-    "Solpanelsinstallation på tak"
+    "Solpanelsinstallation på tak",
+    "Taksäkerhet",
+    "Konsult",
+    "Varm asfalt"
   ],
   achievements: [
     "Över 10,000 slutförda projekt",
-    "5-stjärnigt kundbetyg på Trustpilot",
-    "Vinnare av 'Årets Takläggare' 2022",
+    "5-stjärnigt kundbetyg på Quickfeed",
     "ISO 9001 och ISO 14001 certifierade"
   ],
 };
-
 
 export const roofingProjects = [
   {
@@ -193,23 +225,23 @@ export const roofingProjects = [
 export const testimonials = [
   {
     id: 1,
-    content: "This company transformed our business. Their innovative solutions and dedicated team exceeded all our expectations.",
-    author: "Emma Larsson",
-    role: "CEO, TechStart AB",
+    content: "Tack för ett ordentligt och supersmidigt arbete! Riktigt proffsigt gjort.",
+    author: "Kenneth E.",
+    role: "Nöjd Villa Ägare",
     avatar: "/placeholder.svg?height=40&width=40"
   },
   {
     id: 2,
-    content: "I've never worked with a more professional and responsive team. They truly understand customer needs.",
-    author: "Anders Svensson",
-    role: "Marketing Director, GrowFast",
+    content: "Tack för ett ordentligt och supersmidigt arbete! Riktigt proffsigt gjort.",
+    author: "Miriam k.",
+    role: "Nöjd Villa Ägare",
     avatar: "/placeholder.svg?height=40&width=40"
   },
   {
     id: 3,
-    content: "The quality of their work is outstanding. They delivered our project on time and within budget.",
-    author: "Sofia Bergström",
-    role: "Project Manager, BuildRight",
+    content: "Tack för ett ordentligt och supersmidigt arbete! Riktigt proffsigt gjort.",
+    author: "Sofia B.",
+    role: "Styrelsen i BRF",
     avatar: "/placeholder.svg?height=40&width=40"
   }
 ]

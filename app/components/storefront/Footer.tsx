@@ -45,11 +45,11 @@ export function Footer() {
               </li>
               <li className='flex items-center text-sm text-neutral-200'>
                 <Mail size={16} className='mr-2' />
-                <a href="mailto:info@jhcplatochbygg.se" className='hover:underline'>info@jhcplatochbygg.se</a>
+                <a href="mailto:info@jhcplatochbygg.se" className='hover:underline'>service@jhcplatochbygg.se</a>
               </li>
               <li className='flex items-start text-sm text-neutral-200'>
                 <MapPin size={16} className='mr-2 mt-1' />
-                <span>123 Byggvägen, 12345 Stockholm</span>
+                <span>Mambrevägen 3, 163 43 Spånga </span>
               </li>
             </ul>
           </div>

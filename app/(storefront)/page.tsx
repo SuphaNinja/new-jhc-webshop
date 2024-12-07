@@ -19,10 +19,9 @@ export default function page() {
         <FeaturedProducts />
         <Services />
       </Container>
-        <ProjectsSection />
+      <ProjectsSection />
       <Container>
         <Testimonials />
-        <Employees />
       </Container>
     </>
   )

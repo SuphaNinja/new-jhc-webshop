@@ -21,9 +21,12 @@ export default function Testimonials() {
                     <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
                     <AvatarFallback>{testimonial.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                   </Avatar>
-                  <div>
+                  <div className="flex flex-col w-full">
                     <p className="font-semibold text-gray-900 dark:text-white">{testimonial.author}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                    <div className='flex w-full '>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                      <p className='ml-auto text-sm text-gray-500'>5/5</p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
