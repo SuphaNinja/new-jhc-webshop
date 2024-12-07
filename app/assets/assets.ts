@@ -170,7 +170,7 @@ export const companyInfo = {
 export const roofingProjects = [
   {
     id: 1,
-    title: "Modern villataksrenovering",
+    title: "Modern villataks renovering",
     description: "Komplett takbyte för ett modernt enfamiljshus med högkvalitativa takpannor.",
     images: [
       "https://www.build-review.com/wp-content/uploads/2021/07/Roof.jpg",
