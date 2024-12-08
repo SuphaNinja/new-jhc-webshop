@@ -14,14 +14,14 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export async function Navbar() {
     noStore();
-    const {getUser} = getKindeServerSession();
+    const { getUser } = getKindeServerSession();
     const user = await getUser();
 
     const cart: Cart | null = await redis.get(`cart-${user?.id}`);
     const totalItems = cart?.items.reduce((acc, item) => acc + item.quantity, 0) || 0;
 
     return (
-        <nav className='w-full md:static sticky top-0 z-50 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between'>
+        <nav className='w-full border-b md:static sticky top-0 z-50 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between'>
 
              <Sheet>
                 <SheetTrigger asChild>
@@ -78,11 +78,11 @@ export async function Navbar() {
                         />
                     </>
                 ): (
-                    <div className='hidden md:flex md:flex-1 md:items-center md:justify-end md:space-x-2'>
+                    <div className='flex flex-col md:flex-row md:flex-1 md:items-center md:justify-end md:space-x-2'>
                         <Button variant={"ghost"} asChild>
                             <LoginLink>Sign In</LoginLink>
                         </Button>
-                        <span className='h-6 w-px bg-gray-200'></span>
+                        <span className='hidden md:flex h-6 w-px bg-gray-200'></span>
                         <Button variant={"ghost"} asChild>
                             <RegisterLink>Sign Up</RegisterLink>
                         </Button>

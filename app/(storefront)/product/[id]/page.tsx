@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 import { formatPrice } from '@/lib/formatPrice'
 import { unstable_noStore as noStore } from 'next/cache'
 import Container from '@/app/components/Container'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 async function getData(productId: string) {
     const data = await prisma.product.findUnique({
         where: { id: productId },
@@ -21,7 +22,13 @@ async function getData(productId: string) {
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
     noStore();
-    const { id } = params
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+    let isLoggedIn = false;
+    if (user) {
+        isLoggedIn = true;
+    }
+    const { id } =await params
     const data = await getData(id);
 
     return (
@@ -48,6 +55,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
                         productId={data.id}
                         colors={data.colors}
                         sizes={data.sizes}
+                        isLoggedIn={isLoggedIn}
                     />
                 </div>
             </div>

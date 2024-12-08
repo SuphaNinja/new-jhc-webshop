@@ -4,16 +4,18 @@ import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import { addItem } from '@/app/actions'
 import { ShoppingBagButton } from '@/app/components/SubmitButtons'
+import { RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server'
 
 interface ProductFormProps {
     productId: string
     colors: string[]
     sizes: string[]
+    isLoggedIn: boolean
 }
 
-export function ProductForm({ productId, colors, sizes }: ProductFormProps) {
+export function ProductForm({ productId, colors, sizes, isLoggedIn }: ProductFormProps) {
     const [selectedColor, setSelectedColor] = useState<string>('')
-    const [selectedSize, setSelectedSize] = useState<string>('')
+    const [selectedSize, setSelectedSize] = useState<string>(colors.length > 0 ? colors[0] :'')
     const [quantity, setQuantity] = useState(1)
     const [error, setError] = useState<string | null>(null)
 
@@ -100,7 +102,17 @@ export function ProductForm({ productId, colors, sizes }: ProductFormProps) {
                     {error}
                 </div>
             )}
-            <ShoppingBagButton />
+            {isLoggedIn ? (
+                <ShoppingBagButton />
+            ): (
+                    <Button 
+                        size="lg"
+                        className='w-full mt-5'  
+                        disabled
+                    >
+                        Du måste logga in först!
+                    </Button>
+            )}
         </form>
     )
 }
