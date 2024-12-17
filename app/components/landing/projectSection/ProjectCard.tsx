@@ -47,7 +47,7 @@ export default function ProjectCard({project}: {project: iAppProps}) {
                   <p className='text-muted-foreground text-neutral-200 font-medium'>{project.adress}</p>
                   <p className='text-md  text-neutral-300 leading-relaxed line-clamp-6'>{project.description}</p>
               </div>
-              <Button
+              {/* <Button
                   className={`mt-8 w-full sm:w-auto hover:scale-105 ${project.id % 2 === 0 ? "sm:self-start" : "sm:self-end"}`}
                   size="lg"
               >
@@ -55,7 +55,7 @@ export default function ProjectCard({project}: {project: iAppProps}) {
                       Läs mer
                       <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
-              </Button>
+              </Button> */}
           </div>
       </div>
   )

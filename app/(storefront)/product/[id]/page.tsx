@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
                 <ImageSlider images={data.images} />
                 <div>
                     <h1 className='text-3xl font-extrabold tracking-tight'>{data.name}</h1>
-                    <p className='text-3xl mt-2'>{formatPrice(data.price)}</p>
+                    <p className='text-3xl mt-2'>{isLoggedIn ? formatPrice(data.price) : "Logga in för att se pris"}</p>
                     <div className='mt-3 flex items-center gap-1'>
                         <StarIcon className='size-4 text-yellow-500 fill-yellow-500' />
                         <StarIcon className='size-4 text-yellow-500 fill-yellow-500' />

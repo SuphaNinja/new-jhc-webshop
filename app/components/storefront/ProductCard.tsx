@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Skeleton } from '@/components/ui/skeleton'
 import { formatPrice } from '@/lib/formatPrice'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import { Product } from '@prisma/client'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -11,7 +12,11 @@ import React from 'react'
 interface iAppProps {
     product: Product
 }
-export default function ProductCard({ product }: iAppProps) {
+export default async function ProductCard({ product }: iAppProps) {
+
+    const {getUser} = getKindeServerSession();
+    const user = await getUser();
+
     return (
         <Card className="w-full max-w-sm mx-auto overflow-hidden">
             <CardContent className="p-0">
@@ -44,7 +49,7 @@ export default function ProductCard({ product }: iAppProps) {
                             className='first-letter:uppercase hover:underline text-muted-foreground'>{product.category !== "klader" ? product.category : "Kläder"}
                         </Link>
                     </div>
-                    <p className='text-lg font-medium'>{formatPrice(product.price)}</p>
+                    <p className={`${user ? "text-lg": "text-sm"} font-medium`}>{!user ? ("Logga in för att se priser"): (formatPrice(product.price))}</p>
                 </div>
                 <p className="text-sm text-muted-foreground line-clamp-3">
                     {product.description}

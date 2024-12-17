@@ -37,11 +37,11 @@ export function Footer() {
             <ul className='space-y-2'>
               <li className='flex items-center text-sm text-neutral-200'>
                 <Phone size={16} className='mr-2' />
-                <span>Kundtjänst: 08-123 45 67</span>
+                <span>Kundtjänst: 08-525 184 04</span>
               </li>
               <li className='flex items-center text-sm text-neutral-200'>
                 <Phone size={16} className='mr-2' />
-                <span>Orderförfrågningar: 08-765 43 21</span>
+                <span>Orderförfrågningar: 08-525 184 04</span>
               </li>
               <li className='flex items-center text-sm text-neutral-200'>
                 <Mail size={16} className='mr-2' />
@@ -57,8 +57,8 @@ export function Footer() {
             <h3 className='text-lg font-semibold text-muted mb-4'>Snabblänkar</h3>
             <ul className='space-y-2 text-sm'>
               <li><Link href="/about" className='text-neutral-200 hover:underline'>Om oss</Link></li>
-              <li><Link href="/services" className='text-neutral-200 hover:underline'>Våra tjänster</Link></li>
-              <li><Link href="/projekt" className='text-neutral-200 hover:underline'>Tidigare projekt</Link></li>
+              {/* <li><Link href="/services" className='text-neutral-200 hover:underline'>Våra tjänster</Link></li> */}
+              {/* <li><Link href="/projekt" className='text-neutral-200 hover:underline'>Tidigare projekt</Link></li> */}
               <li><Link href="/kontakt" className='text-neutral-200 hover:underline'>Kontakta oss</Link></li>
             </ul>
           </div>

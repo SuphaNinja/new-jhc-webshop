@@ -49,7 +49,7 @@ export default function Services() {
 
                 <div className="text-center">
                     <Button asChild size="lg">
-                        <Link href="/tjanster" className="inline-flex items-center">
+                        <Link href="/" className="inline-flex items-center">
                             Se alla våra tjänster
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>

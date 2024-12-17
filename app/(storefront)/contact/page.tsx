@@ -41,8 +41,8 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-semibold mb-4">Vet du inte vem du ska ringa?</h2>
                 <p className="text-lg">
                     Ring kontoret{" "}
-                    <a href="tel:(123) 456-7800" className="text-primary hover:underline font-semibold">
-                        (123) 456-7800
+                    <a href="tel:08-525 184 04" className="text-primary hover:underline font-semibold">
+                        08-525 184 04
                     </a>
                 </p>
             </div>

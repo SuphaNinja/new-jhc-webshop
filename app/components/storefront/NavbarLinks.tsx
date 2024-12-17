@@ -16,21 +16,21 @@ export const navbarLinks= [
         name: "Webshop",
         href: "/shop"
     },
-    {
+    /* {
         id: 2,
         name: "Tjänster",
         href: "/services"
-    },
+    }, */
     {
         id: 3,
         name: "Om oss",
         href: "/about"
     },
-    {
+    /* {
         id: 4,
         name: "Projekt",
         href: "/projects"
-    },
+    }, */
     {
         id: 5,
         name: "Kontakta Oss",

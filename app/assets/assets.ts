@@ -37,32 +37,10 @@ export const projects = [
     {
         id: 0,
         title: "Papptak",
-        adress: "Adress of project 1",
-        description: " project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1of project 1 vDescription of project 1Description of project 1Description of project 1",
+        adress: "Stockholm",
+        description: "Ett papptaksjobb innebär arbete med att lägga eller reparera tak med hjälp av papptäckning, en praktisk och hållbar lösning för olika typer av byggnader. Arbetet omfattar allt från förberedelse av takytan till att applicera takpappen och säkerställa att tätskiktet är korrekt installerat för att skydda mot väder och slitage.",
         images: [image21,image22,image23,image24],
-    },
-    {
-        id: 1,
-        title: "Tegelpannor",
-        adress: "Adress of project 1",
-        description: "Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1",
-        images: [
-            "https://www.city-guide-stockholm.com/_bibli/articlesPage/72/images/adobestock-kevin-cho-stockholm.jpg?v=ficheArticle&width=490&height=275&pixelRatio=2.6250",
-            "https://images.ctfassets.net/nwbqij9m1jag/pMT8jSC5zwqIwwyCo4m2c/03add94bb9fa8d765af6b4bd0f314ed1/Stockholm.jpg?w=1024&fit=fill&f=faces&fm=webp",
-            "https://www.city-guide-stockholm.com/_bibli/articlesPage/57/images/skeppsholmen-lesley-williamson-1.jpg?v=ficheArticle&width=416&height=275&pixelRatio=2.6250"
-        ],
-    },
-    {
-        id: 2,
-        title: "Solpaneler ",
-        adress: "Adress of project 1",
-        description: " Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1Description of project 1 vDescription of project 1Description of project 1Description of project 1",
-        images: [
-            "https://www.city-guide-stockholm.com/_bibli/articlesPage/72/images/adobestock-kevin-cho-stockholm.jpg?v=ficheArticle&width=490&height=275&pixelRatio=2.6250",
-            "https://images.ctfassets.net/nwbqij9m1jag/pMT8jSC5zwqIwwyCo4m2c/03add94bb9fa8d765af6b4bd0f314ed1/Stockholm.jpg?w=1024&fit=fill&f=faces&fm=webp",
-            "https://www.city-guide-stockholm.com/_bibli/articlesPage/57/images/skeppsholmen-lesley-williamson-1.jpg?v=ficheArticle&width=416&height=275&pixelRatio=2.6250"
-        ],
-    },
+    }
 ]
 
 export const employees = [

@@ -21,7 +21,7 @@ export async function Hero() {
                 <Image
                     fill
                     alt="Banner Image"
-                    src="https://sites-files-addictive.s3.eu-north-1.amazonaws.com/image/4d1fe994-3062-4e89-bf9d-78631da5ebc7/papptak-stockholm_1726217438859.png"
+                    src="https://ci3.googleusercontent.com/mail-img-att/AGAZnRq5H6YsVhyFhUax6jsJRqS2qGL90JhezLyhhC6ku0QZmN0t3G_sHDxX7eSFfPBbQ9Xvzq47zezJpKWcCG9f2Tjyzgt-2hIIyXL_0bifcxqIqLtmfWUDHkxJziPKlnn_Ih7anNaRyq2FDAzSn5qET60VbPqusDcOQV6F2beWbs_NhDdBntMSmpWNcV8TEmPWdQTUj98p_d9R1KMnJ2SVehmPZ10JnpzzFYCu-cNMq__7GYIY9IAPF4iYD-RS9dONyCies3sIjdLEj-cveGoHcpE2j76A92MzmLUTdB_tsg7qWWm7CGQSvg7PlJnoDCSeY_7tf_TJFv9qrUTi1Sqktg7CHCAtkXLHXEl4QrQOmKCBz1T6280CLUUf0TdYH-eJGxFST_h1W8ZUUdPpRVuIIHmW3xlFv0R1rwuknCEtlriX_Qy6EPF3EAL3jJjKxjD2pKs-Fjwn1DiWGp8rhBcJcqn43SRUS8zZKTZbItzUdkGbrcaheUmzz0HK-rp3JDjMD3Mqek37z2xBnFKIJzaxGk6RDtZgz-12ramuDp41nnAEcoPvglMy6v9TY_m7u7xkb-elquu_abxW3xggW8xwGvLrKgMsifMuDMk2wneRpxilA6QsWhGpq1GeZhBKqPhcX4IDshdo0YNBZz6V4VlrKHGCnK8DwugmKcXDj3xwYkvswhCcY-GKvZ6C780jY0lnp1FyCMKNo_KP7MJQO7b2s8HPD_DckKYCQuCe2ktkOS5Y_33GBkNaYBcWM6WUHhXCcEz9M4IQvAfxVcJayKsfrYRM1H0niRpjOGRXjPqpnivNPhUBI-JVYgUyGVYWctYiMAdV3m-ztiwUSccoG0P1-1Vz8zFpvILq-Zvxihcl8CAMTxR9c4omQt3YGkZU0MK-xrsJk05wNLLElCFxGfaULVGgnzj9KEIYSRxYOEN921b8Om5LThbcBH1DtVoag2uKQIen0-FNSrn-CtrufkN8-2vs2wuGgcTsctKNc5PHpf3KhENpBlrdNY8WIxFZlSPnbh-3SXN-aaL_vT2_tsVq8zgtmWzHkw5ZlCWwFRT5e6P6KhBIBXDyra1vSor5gL_RLXVu9bQolTjN-AO9f6wqZIb7OqXBwsr5zgVs77ZXLk7sBPO79PLlMkI967LKHtb_2GaZ7g=s0-l75-ft"
                     className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 flex items-center justify-center md:items-end md:justify-start">
